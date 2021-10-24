@@ -81,14 +81,12 @@ def wordsearch(search_string):
                 print(ans,"Vert down")
                  
         
-        shifth = 0
-        shiftv = 0
+        shift = 0
         for letter in range(len(string)):
             if fit_right(string,w,h) and fit_top(string,w,h):
-                if puzzle[r + shiftv][c + shifth] == string[letter]:#up right
-                    ans.append((r + shiftv, c + shifth))
-                    shiftv += 1
-                    shifth += 1                        
+                if puzzle[r + shift][c + shift] == string[letter]:#up right
+                    ans.append((r + shift, c + shift))
+                    shift += 1                        
                 else:
                     ans.clear()
                     break
@@ -96,14 +94,13 @@ def wordsearch(search_string):
                 print(ans,"Diag up right")
                     
         
-        shifth = 0
-        shiftv = 0
+        shift = 0        
         for letter in range(len(string)):
             if fit_left(string,w,h) and fit_down(string,w,h):
-                if puzzle[r - shiftv][c - shifth] == string[letter]:#down left
-                    ans.append((r - shiftv, c - shifth))
-                    shiftv += 1
-                    shifth += 1
+                if puzzle[r - shift][c - shift] == string[letter]:#down left
+                    ans.append((r - shift, c - shift))
+                    shift += 1
+                    
                         
                 else:
                     ans.clear()
@@ -111,28 +108,28 @@ def wordsearch(search_string):
             if len(ans) == len(string):
                 print(ans,"Diag down left")
         
-        shifth = 0
-        shiftv = 0
+        
+        shift = 0
         for letter in range(len(string)):
             if fit_left(string,w,h) and fit_top(string,w,h):
-                if puzzle[r + shiftv][c - shifth] == string[letter]: #up left
-                    ans.append((r + shiftv, c - shifth))
-                    shiftv += 1
-                    shifth += 1
+                if puzzle[r + shift][c - shift] == string[letter]: #up left
+                    ans.append((r + shift, c - shift))
+                    shift += 1
+                    
                 else:
                     ans.clear()
                     break
             if len(ans) == len(string):
                 print(ans,"Diag up left")
         
-        shifth = 0
-        shiftv = 0
+        
+        shift = 0
         for letter in range(len(string)):
             if fit_right(string,w,h) and fit_down(string,w,h):
-                if puzzle[r - shiftv][c + shifth] == string[letter]: #down right
-                    ans.append((r - shiftv, c + shifth))
-                    shiftv += 1
-                    shifth += 1
+                if puzzle[r - shift][c + shift] == string[letter]: #down right
+                    ans.append((r - shift, c + shift))
+                    shift += 1
+                    
                         
                 else:
                     ans.clear()
