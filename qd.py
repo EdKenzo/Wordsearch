@@ -61,7 +61,7 @@ def wordsearch(search_string):
         if fit_top(string,w,h):
             for letter in range(len(string)):
                 if puzzle[r - letter][c] == string[letter]:#checks up
-                    ans.append((r+letter,c))
+                    ans.append((r-letter,c))
                         
                 else:
                     ans.clear()
@@ -71,8 +71,8 @@ def wordsearch(search_string):
         
         if fit_down(string,w,h):
             for letter in range(len(string)):
-                if puzzle[r - letter][c] == string[letter]:#checks down
-                    ans.append((r-letter,c))
+                if puzzle[r + letter][c] == string[letter]:#checks down
+                    ans.append((r + letter,c))
                         
                 else:
                     ans.clear()
