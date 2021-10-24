@@ -26,10 +26,10 @@ def wordsearch(search_string):
             if len(string) <= (h - r): #enough space to downwards  
                 return True
         def fit_top (string,w,h):
-            if len(string) <= r:#enough space on top 
+            if len(string) <= (r + 1):#enough space on top 
                 return True
         def fit_left(string,w,h):
-            if len(string) <= c:#enough space to the left 
+            if len(string) <= (c + 1):#enough space to the left 
                 return True
             
         ans = []
@@ -145,7 +145,8 @@ def wordsearch(search_string):
         for c in range(w):
             if puzzle[r][c] == string[0]:
                 check(r,c )
+    
             
             
             
-wordsearch('runaround')
+wordsearch('run')
