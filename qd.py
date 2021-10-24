@@ -49,13 +49,13 @@ def wordsearch(search_string):
             if fit_left(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r][c - letter] == string[letter]:#checks back
-                        ans.append((r,c+letter))
+                        ans.append((r,c-letter))
                         
                     else:
                         ans.clear()
                         break
                 if len(ans) == len(string):
-                    print(check_hb,"Hori back")
+                    print(ans,"Hori back")
         
         def check_vertical_u(r,c ):
             ans = []
@@ -161,4 +161,4 @@ def wordsearch(search_string):
             
             
             
-wordsearch('run')
+wordsearch('chaotic')
