@@ -32,18 +32,18 @@ def wordsearch(search_string):
             if len(string) <= c:#left fits
                 return True
             
-        def check_horizontal_f(r,c,puzzle):#worry 1: works for first few if case then later stop... list affected?
+        def check_horizontal_f(r,c,puzzle):
             check_hf = []
-            if fit_right:
+            if fit_right(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r][c + letter] == string[letter]:#checks front
-                        check_hu.append((r,c+letter))
-                        print(check_hu)
+                        check_hf.append((r,c+letter))
+                        print(check_hf)
                     else:
                         break
         def check_horizontal_b(r,c,puzzle):
             check_hb = []
-            if fit_left:
+            if fit_left(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r][c - letter] == string[letter]:#checks back
                         check_hb.append((r,c+letter))
@@ -53,7 +53,7 @@ def wordsearch(search_string):
         
         def check_vertical_u(r,c,puzzle):
             check_vu = []
-            if fit_top:
+            if fit_top(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r + letter][c] == string[letter]:#checks up
                         check_vu.append((r+letter,c))
@@ -62,7 +62,7 @@ def wordsearch(search_string):
                         break
         def check_vertical_d(r,c,puzzle):
             check_vd = []
-            if fit_down:
+            if fit_down(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r - letter][c] == string[letter]:#checks down
                         check_vd.append((r-letter,c))
@@ -75,7 +75,7 @@ def wordsearch(search_string):
             shifth = 0
             shiftv = 0
             for letter in range(len(string)):
-                if fit_right:
+                if fit_right(string,w,h) and fit_top(string,w,h):
                     if puzzle[r + shiftv][c + shifth] == string[letter]:#up right
                         check_dur.append((r + shiftv, c + shifth))
                         shiftv += 1
@@ -88,7 +88,7 @@ def wordsearch(search_string):
             shifth = 0
             shiftv = 0
             for letter in range(len(string)):
-                if fit_left:
+                if fit_left(string,w,h) and fit_down(string,w,h):
                     if puzzle[r - shiftv][c - shifth] == string[letter]:#down left
                         check_ddl.append((r - shiftv, c - shifth))
                         shiftv -= 1
@@ -101,7 +101,7 @@ def wordsearch(search_string):
             shifth = 0
             shiftv = 0
             for letter in range(len(string)):
-                if fit_left:
+                if fit_left(string,w,h) and fit_top(string,w,h):
                     if puzzle[r + shiftv][c - shifth] == string[letter]: #up left
                         check_dul.append((r + shiftv, c - shifth))
                         shiftv += 1
@@ -114,7 +114,7 @@ def wordsearch(search_string):
             shifth = 0
             shiftv = 0
             for letter in range(len(string)):
-                if fit_right:
+                if fit_right(string,w,h) and fit_down(string,w,h):
                     if puzzle[r - shiftv][c + shifth] == string[letter]: #down right
                         check_ddr.append((r - shiftv, c + shifth))
                         shiftv -= 1
@@ -122,14 +122,14 @@ def wordsearch(search_string):
                         print(check_ddr)
                     else:
                         break
-        check_horizontal_b
-        check_horizontal_f
-        check_vertical_u
-        check_vertical_d
-        check_diag_ur
-        check_diag_dl
-        check_diag_ul
-        check_diag_dr
+        check_horizontal_b(r,c,puzzle)
+        check_horizontal_f(r,c,puzzle)
+        check_vertical_u(r,c,puzzle)
+        check_vertical_d(r,c,puzzle)
+        check_diag_ur(r,c,puzzle)
+        check_diag_dl(r,c,puzzle)
+        check_diag_ul(r,c,puzzle)
+        check_diag_dr(r,c,puzzle)
         
     for r in range(h):
         for c in range(w):
