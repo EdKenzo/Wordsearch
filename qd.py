@@ -102,8 +102,8 @@ def wordsearch(search_string):
             if fit_left(string,w,h) and fit_down(string,w,h):
                 if puzzle[r - shiftv][c - shifth] == string[letter]:#down left
                     ans.append((r - shiftv, c - shifth))
-                    shiftv -= 1
-                    shifth -= 1
+                    shiftv += 1
+                    shifth += 1
                         
                 else:
                     ans.clear()
@@ -118,7 +118,7 @@ def wordsearch(search_string):
                 if puzzle[r + shiftv][c - shifth] == string[letter]: #up left
                     ans.append((r + shiftv, c - shifth))
                     shiftv += 1
-                    shifth -= 1
+                    shifth += 1
                 else:
                     ans.clear()
                     break
@@ -131,7 +131,7 @@ def wordsearch(search_string):
             if fit_right(string,w,h) and fit_down(string,w,h):
                 if puzzle[r - shiftv][c + shifth] == string[letter]: #down right
                     ans.append((r - shiftv, c + shifth))
-                    shiftv -= 1
+                    shiftv += 1
                     shifth += 1
                         
                 else:
@@ -148,4 +148,4 @@ def wordsearch(search_string):
             
             
             
-wordsearch('chaotic')
+wordsearch('runaround')
