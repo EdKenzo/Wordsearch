@@ -67,7 +67,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(check_vu,"Vert up")
+                print(ans,"Vert up")
         
         if fit_down(string,w,h):
             for letter in range(len(string)):
@@ -78,7 +78,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(check_vd,"Vert down")
+                print(ans,"Vert down")
                  
         
         shifth = 0
