@@ -38,18 +38,20 @@ def wordsearch(search_string):
                 for letter in range(len(string)):
                     if puzzle[r][c + letter] == string[letter]:#checks front
                         check_hf.append((r,c+letter))
-                        print(check_hf)
+                        
                     else:
                         break
+                    print(check_hf)
         def check_horizontal_b(r,c,puzzle):
             check_hb = []
             if fit_left(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r][c - letter] == string[letter]:#checks back
                         check_hb.append((r,c+letter))
-                        print(check_hb)
+                        
                     else:
                         break
+                    print(check_hb)
         
         def check_vertical_u(r,c,puzzle):
             check_vu = []
@@ -57,18 +59,20 @@ def wordsearch(search_string):
                 for letter in range(len(string)):
                     if puzzle[r + letter][c] == string[letter]:#checks up
                         check_vu.append((r+letter,c))
-                        print(check_vu)
+                        
                     else:
                         break
+                    print(check_vu)
         def check_vertical_d(r,c,puzzle):
             check_vd = []
             if fit_down(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r - letter][c] == string[letter]:#checks down
                         check_vd.append((r-letter,c))
-                        print(check_vd)
+                        
                     else:
                         break
+                    print(check_vd)
                  
         def check_diag_ur(r,c,puzzle):
             check_dur = []
@@ -79,10 +83,11 @@ def wordsearch(search_string):
                     if puzzle[r + shiftv][c + shifth] == string[letter]:#up right
                         check_dur.append((r + shiftv, c + shifth))
                         shiftv += 1
-                        shifth += 1
-                        print(check_dur)
+                        shifth += 1                        
                     else:
                         break
+                    print(check_dur)
+                    
         def check_diag_dl(r,c,puzzle):
             check_ddl = []
             shifth = 0
@@ -93,9 +98,10 @@ def wordsearch(search_string):
                         check_ddl.append((r - shiftv, c - shifth))
                         shiftv -= 1
                         shifth -= 1
-                        print(check_ddl)
+                        
                     else:
                         break
+                    print(check_ddl)
         def check_diag_ul(r,c,puzzle):
             check_dul = []
             shifth = 0
@@ -106,9 +112,10 @@ def wordsearch(search_string):
                         check_dul.append((r + shiftv, c - shifth))
                         shiftv += 1
                         shifth -= 1
-                        print(check_dul)
+                        
                     else:
                         break
+                    print(check_dul)
         def check_diag_dr(r,c,puzzle):
             check_ddr = []
             shifth = 0
@@ -119,9 +126,10 @@ def wordsearch(search_string):
                         check_ddr.append((r - shiftv, c + shifth))
                         shiftv -= 1
                         shifth += 1
-                        print(check_ddr)
+                        
                     else:
                         break
+                    print(check_ddr)
         check_horizontal_b(r,c,puzzle)
         check_horizontal_f(r,c,puzzle)
         check_vertical_u(r,c,puzzle)
