@@ -33,111 +33,118 @@ def wordsearch(search_string):
                 return True
             
         def check_horizontal_f(r,c ):
-            check_hf = []
+            ans = []
             if fit_right(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r][c + letter] == string[letter]:#checks front
-                        check_hf.append((r,c+letter))
+                        ans.append((r,c+letter))
                         
                     else:
-                        check_hf.clear()
+                        ans.clear()
                         break
-                    print(check_hf)
+                if len(ans) == len(string):
+                    print(ans,"Hori front")
         def check_horizontal_b(r,c ):
-            check_hb = []
+            ans = []
             if fit_left(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r][c - letter] == string[letter]:#checks back
-                        check_hb.append((r,c+letter))
+                        ans.append((r,c+letter))
                         
                     else:
-                        check_hb.clear()
+                        ans.clear()
                         break
-                    print(check_hb)
+                if len(ans) == len(string):
+                    print(check_hb,"Hori back")
         
         def check_vertical_u(r,c ):
-            check_vu = []
+            ans = []
             if fit_top(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r + letter][c] == string[letter]:#checks up
-                        check_vu.append((r+letter,c))
+                        ans.append((r+letter,c))
                         
                     else:
-                        check_vu.clear()
+                        ans.clear()
                         break
-                    print(check_vu)
+                if len(ans) == len(string):
+                    print(check_vu,"Vert up")
         def check_vertical_d(r,c ):
-            check_vd = []
+            ans = []
             if fit_down(string,w,h):
                 for letter in range(len(string)):
                     if puzzle[r - letter][c] == string[letter]:#checks down
-                        check_vd.append((r-letter,c))
+                        ans.append((r-letter,c))
                         
                     else:
-                        check_vd.clear()
+                        ans.clear()
                         break
-                    print(check_vd)
+                if len(ans) == len(string):
+                    print(check_vd,"Vert down")
                  
         def check_diag_ur(r,c ):
-            check_dur = []
+            ans = []
             shifth = 0
             shiftv = 0
             for letter in range(len(string)):
                 if fit_right(string,w,h) and fit_top(string,w,h):
                     if puzzle[r + shiftv][c + shifth] == string[letter]:#up right
-                        check_dur.append((r + shiftv, c + shifth))
+                        ans.append((r + shiftv, c + shifth))
                         shiftv += 1
                         shifth += 1                        
                     else:
-                        check_dur.clear()
+                        ans.clear()
                         break
-                    print(check_dur)
+                if len(ans) == len(string):
+                    print(ans,"Diag up right")
                     
         def check_diag_dl(r,c ):
-            check_ddl = []
+            ans = []
             shifth = 0
             shiftv = 0
             for letter in range(len(string)):
                 if fit_left(string,w,h) and fit_down(string,w,h):
                     if puzzle[r - shiftv][c - shifth] == string[letter]:#down left
-                        check_ddl.append((r - shiftv, c - shifth))
+                        ans.append((r - shiftv, c - shifth))
                         shiftv -= 1
                         shifth -= 1
                         
                     else:
-                        check_ddl.clear()
+                        ans.clear()
                         break
-                    print(check_ddl)
+                if len(ans) == len(string):
+                    print(ans,"Diag down left")
         def check_diag_ul(r,c ):
-            check_dul = []
+            ans = []
             shifth = 0
             shiftv = 0
             for letter in range(len(string)):
                 if fit_left(string,w,h) and fit_top(string,w,h):
                     if puzzle[r + shiftv][c - shifth] == string[letter]: #up left
-                        check_dul.append((r + shiftv, c - shifth))
+                        ans.append((r + shiftv, c - shifth))
                         shiftv += 1
                         shifth -= 1
-                        
                     else:
-                        check_dul.clear()
+                        ans.clear()
                         break
-                    print(check_dul)
+                if len(ans) == len(string):
+                    print(ans,"Diag up left")
         def check_diag_dr(r,c):
-            check_ddr = []
+            ans = []
             shifth = 0
             shiftv = 0
             for letter in range(len(string)):
                 if fit_right(string,w,h) and fit_down(string,w,h):
                     if puzzle[r - shiftv][c + shifth] == string[letter]: #down right
-                        check_ddr.append((r - shiftv, c + shifth))
+                        ans.append((r - shiftv, c + shifth))
                         shiftv -= 1
                         shifth += 1
                         
                     else:
-                        check_ddr.clear()
+                        ans.clear()
                         break
-                    print(check_ddr)
+                if len(ans) == len(string):
+                    print(ans,"Diag down right")
         check_horizontal_b(r,c)
         check_horizontal_f(r,c)
         check_vertical_u(r,c)
@@ -154,5 +161,4 @@ def wordsearch(search_string):
             
             
             
-wordsearch('runaround')
-
+wordsearch('run')
