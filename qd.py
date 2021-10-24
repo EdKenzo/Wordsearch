@@ -82,10 +82,10 @@ def wordsearch(search_string):
                  
         
         shift = 0
-        for letter in range(len(string)):
-            if fit_right(string,w,h) and fit_top(string,w,h):
-                if puzzle[r + shift][c + shift] == string[letter]:#up right
-                    ans.append((r + shift, c + shift))
+        if fit_right(string,w,h) and fit_top(string,w,h):
+            for letter in range(len(string)):            
+                if puzzle[r - shift][c + shift] == string[letter]:#up right
+                    ans.append((r - shift, c + shift))
                     shift += 1                        
                 else:
                     ans.clear()
@@ -97,8 +97,8 @@ def wordsearch(search_string):
         shift = 0        
         for letter in range(len(string)):
             if fit_left(string,w,h) and fit_down(string,w,h):
-                if puzzle[r - shift][c - shift] == string[letter]:#down left
-                    ans.append((r - shift, c - shift))
+                if puzzle[r + shift][c - shift] == string[letter]:#down left
+                    ans.append((r + shift, c - shift))
                     shift += 1
                     
                         
@@ -112,8 +112,8 @@ def wordsearch(search_string):
         shift = 0
         for letter in range(len(string)):
             if fit_left(string,w,h) and fit_top(string,w,h):
-                if puzzle[r + shift][c - shift] == string[letter]: #up left
-                    ans.append((r + shift, c - shift))
+                if puzzle[r - shift][c - shift] == string[letter]: #up left
+                    ans.append((r - shift, c - shift))
                     shift += 1
                     
                 else:
@@ -126,8 +126,8 @@ def wordsearch(search_string):
         shift = 0
         for letter in range(len(string)):
             if fit_right(string,w,h) and fit_down(string,w,h):
-                if puzzle[r - shift][c + shift] == string[letter]: #down right
-                    ans.append((r - shift, c + shift))
+                if puzzle[r + shift][c + shift] == string[letter]: #down right
+                    ans.append((r + shift, c + shift))
                     shift += 1
                     
                         
