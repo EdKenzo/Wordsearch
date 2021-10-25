@@ -43,6 +43,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
+                print(ans)
                 total_ans.append(ans)
         
     
@@ -55,6 +56,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
+                print(ans)
                 total_ans.append(ans)
         
         
@@ -68,6 +70,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
+                print(ans)
                 total_ans.append(ans)
         
         if fit_down(string,w,h):
@@ -79,6 +82,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
+                print(ans)
                 total_ans.append(ans)
                  
         
@@ -92,6 +96,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
+                print(ans)
                 total_ans.append(ans)
                     
         
@@ -106,6 +111,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
+                print(ans)
                 total_ans.append(ans)
         
         
@@ -120,6 +126,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
+                print(ans)
                 total_ans.append(ans)
         
         
@@ -135,23 +142,20 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
+                print(ans)
                 total_ans.append(ans)
-        return total_ans
+        
+        
+        
         
 
         
     for r in range(h):
         for c in range(w):
             if puzzle[r][c] == string[0]:
-                if len(check(r,c)) > 1:
-                    print(check(r,c),"more than one")
-                else:
-                    ans = check(r,c)
-                    print(ans[0],"1")
-        
-        
+                check(r,c)
     
             
             
             
-wordsearch('blew')
+wordsearch('runaround')
