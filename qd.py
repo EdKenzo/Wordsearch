@@ -146,7 +146,9 @@ def wordsearch(search_string):
                 if len(check(r,c)) > 1:
                     print(check(r,c),"more than one")
                 else:
-                    print(check(r,c)[0],"one")
+                    ans = check(r,c)
+                    print(ans[0],"1")
+        
         
     
             
