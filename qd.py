@@ -20,6 +20,7 @@ def wordsearch(search_string):
     
     def check(r,c):
         total_ans = []
+        
         def fit_right(string,w,h):
             if len(string) <= (w - c): #enough space to the right
                 return True
@@ -33,117 +34,157 @@ def wordsearch(search_string):
             if len(string) <= (c + 1):#enough space to the left 
                 return True
             
-        ans = []
-        if fit_right(string,w,h):
-            for letter in range(len(string)):
-                if puzzle[r][c + letter] == string[letter]:#checks front
-                    ans.append((r,c+letter))
-                        
-                else:
-                    ans.clear()
-                    break
-            if len(ans) == len(string):
-                print(ans)
-                total_ans.append(ans)
         
     
-        if fit_left(string,w,h):
-            for letter in range(len(string)):
-                if puzzle[r][c - letter] == string[letter]:#checks back
-                    ans.append((r,c-letter))
-                        
-                else:
-                    ans.clear()
-                    break
-            if len(ans) == len(string):
-                print(ans)
-                total_ans.append(ans)
+        def check_front(r,c):
+            ans = []
+            if fit_right(string,w,h):
+                for letter in range(len(string)):
+                    if puzzle[r][c + letter] == string[letter]:#checks front
+                        ans.append((r,c+letter))
+                            
+                    else:
+                        ans.clear()
+                        break
+                if len(ans) == len(string):
+                    return(ans)
+                    
+            return False
+        
+        def check_back(r,c):
+            ans = []
+            if fit_left(string,w,h):
+                for letter in range(len(string)):
+                    if puzzle[r][c - letter] == string[letter]:#checks back
+                        ans.append((r,c-letter))
+                            
+                    else:
+                        ans.clear()
+                        break
+                if len(ans) == len(string):
+                    return(ans)
+                    
+            return False
         
         
-          
-        if fit_top(string,w,h):
-            for letter in range(len(string)):
-                if puzzle[r - letter][c] == string[letter]:#checks up
-                    ans.append((r-letter,c))
-                        
-                else:
-                    ans.clear()
-                    break
-            if len(ans) == len(string):
-                print(ans)
-                total_ans.append(ans)
+        def check_up(r,c):
+            ans = []
+            if fit_top(string,w,h):
+                for letter in range(len(string)):
+                    if puzzle[r - letter][c] == string[letter]:#checks up
+                        ans.append((r-letter,c))
+                            
+                    else:
+                        ans.clear()
+                        break
+                if len(ans) == len(string):
+                    return(ans)
+            return False
         
-        if fit_down(string,w,h):
-            for letter in range(len(string)):
-                if puzzle[r + letter][c] == string[letter]:#checks down
-                    ans.append((r + letter,c))
-                        
-                else:
-                    ans.clear()
-                    break
-            if len(ans) == len(string):
-                print(ans)
-                total_ans.append(ans)
+        def check_down(r,c):
+            ans = []
+            if fit_down(string,w,h):
+                for letter in range(len(string)):
+                    if puzzle[r + letter][c] == string[letter]:#checks down
+                        ans.append((r + letter,c))     
+                    else:
+                        ans.clear()
+                        break
+                if len(ans) == len(string):
+                    return(ans)
+            return False
                  
-        
-        shift = 0
-        if fit_right(string,w,h) and fit_top(string,w,h):
-            for letter in range(len(string)):            
-                if puzzle[r - shift][c + shift] == string[letter]:#up right
-                    ans.append((r - shift, c + shift))
-                    shift += 1                        
-                else:
-                    ans.clear()
-                    break
-            if len(ans) == len(string):
-                print(ans)
-                total_ans.append(ans)
+        def check_up_right(r,c):
+            ans = []
+            if fit_right(string,w,h) and fit_top(string,w,h):
+                for letter in range(len(string)):            
+                    if puzzle[r - letter][c + letter] == string[letter]:#up right
+                        ans.append((r - letter, c + letter))
+                    else:
+                        ans.clear()
+                        break
+                if len(ans) == len(string):
+                    return(ans)
+            return False
                     
         
-        shift = 0        
-        for letter in range(len(string)):
+               
+        def check_down_left(r,c):
+            ans = []
             if fit_left(string,w,h) and fit_down(string,w,h):
-                if puzzle[r + shift][c - shift] == string[letter]:#down left
-                    ans.append((r + shift, c - shift))
-                    shift += 1
-  
-                else:
-                    ans.clear()
-                    break
-            if len(ans) == len(string):
-                print(ans)
-                total_ans.append(ans)
+                for letter in range(len(string)):
+                    if puzzle[r + letter][c - letter] == string[letter]:#down left
+                        ans.append((r + letter, c - letter))
+                    else:
+                        ans.clear()
+                        break
+                if len(ans) == len(string):
+                    return(ans)
+            return False
+    
         
-        
-        shift = 0
-        for letter in range(len(string)):
+        def check_up_left(r,c):
+            ans = []
             if fit_left(string,w,h) and fit_top(string,w,h):
-                if puzzle[r - shift][c - shift] == string[letter]: #up left
-                    ans.append((r - shift, c - shift))
-                    shift += 1
-                    
-                else:
-                    ans.clear()
-                    break
-            if len(ans) == len(string):
-                print(ans)
-                total_ans.append(ans)
-        
-        
-        shift = 0
-        for letter in range(len(string)):
-            if fit_right(string,w,h) and fit_down(string,w,h):
-                if puzzle[r + shift][c + shift] == string[letter]: #down right
-                    ans.append((r + shift, c + shift))
-                    shift += 1
-                    
+                for letter in range(len(string)):
+                    if puzzle[r - letter][c - letter] == string[letter]: #up left
+                        ans.append((r - letter, c - letter))
                         
-                else:
-                    ans.clear()
-                    break
-            if len(ans) == len(string):
-                print(ans)
-                total_ans.append(ans)
+                    else:
+                        ans.clear()
+                        break
+                if len(ans) == len(string):
+                    return(ans)
+            return False
+        
+        
+        def check_down_right(r,c):
+            ans = []
+            if fit_right(string,w,h) and fit_down(string,w,h):
+                for letter in range(len(string)):
+                    if puzzle[r + letter][c + letter] == string[letter]: #down right
+                        ans.append((r + letter, c + letter))  
+                    else:
+                        ans.clear()
+                        break
+                if len(ans) == len(string):
+                    return(ans)
+            return False
+
+        cf = check_front(r,c)
+        if cf : 
+            total_ans.append(cf)
+                        
+        cb = check_back(r,c)
+        if cb:
+            total_ans.append(cb)
+        
+        cu = check_up(r,c)
+        if cu:
+            total_ans.append(cu)
+            
+        cd = check_down(r,c)
+        if cd:
+            total_ans.append(cd)
+        
+        cur = check_up_right(r,c)
+        if cur:
+            total_ans.append(cur)
+        
+        cul = check_up_left(r,c)
+        if cul:
+            total_ans.append(cul)
+            
+        cdl = check_down_left(r,c)
+        if cdl:
+            total_ans.append(cdl)
+        
+        cdr = check_down_right(r,c)
+        if cdr: 
+            total_ans.append(cdr)
+        return total_ans
+
+        
         
         
         
@@ -153,9 +194,11 @@ def wordsearch(search_string):
     for r in range(h):
         for c in range(w):
             if puzzle[r][c] == string[0]:
-                check(r,c)
+                print(check(r,c))
+                
+            
     
             
             
             
-wordsearch('runaround')
+wordsearch('lee')
