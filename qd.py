@@ -20,7 +20,6 @@ def wordsearch(search_string):
     
     def check(r,c):
         total_ans = []
-        
         def fit_right(string,w,h):
             if len(string) <= (w - c): #enough space to the right
                 return True
@@ -180,25 +179,30 @@ def wordsearch(search_string):
             total_ans.append(cdl)
         
         cdr = check_down_right(r,c)
-        if cdr: 
+        if cdr : 
             total_ans.append(cdr)
+            
         return total_ans
 
         
         
         
         
-        
-
-        
     for r in range(h):
         for c in range(w):
             if puzzle[r][c] == string[0]:
-                print(check(r,c))
+                grand_total_answers = []
+
                 
+                result = check(r,c)
+
+                if result:
+                    
+                    if len(result) == 1:
+                        print(result[0])
+                    elif len(result) > 1:
+                        print(result)
             
-    
             
             
-            
-wordsearch('lee')
+wordsearch('ob')
