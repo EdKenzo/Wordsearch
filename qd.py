@@ -19,6 +19,7 @@ def wordsearch(search_string):
 
     
     def check(r,c):
+        total_ans = []
         def fit_right(string,w,h):
             if len(string) <= (w - c): #enough space to the right
                 return True
@@ -42,7 +43,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(ans,"Hori front")
+                total_ans.append(ans)
         
     
         if fit_left(string,w,h):
@@ -54,7 +55,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(ans,"Hori back")
+                total_ans.append(ans)
         
         
           
@@ -67,7 +68,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(ans,"Vert up")
+                total_ans.append(ans)
         
         if fit_down(string,w,h):
             for letter in range(len(string)):
@@ -78,7 +79,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(ans,"Vert down")
+                total_ans.append(ans)
                  
         
         shift = 0
@@ -91,7 +92,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(ans,"Diag up right")
+                total_ans.append(ans)
                     
         
         shift = 0        
@@ -100,13 +101,12 @@ def wordsearch(search_string):
                 if puzzle[r + shift][c - shift] == string[letter]:#down left
                     ans.append((r + shift, c - shift))
                     shift += 1
-                    
-                        
+  
                 else:
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(ans,"Diag down left")
+                total_ans.append(ans)
         
         
         shift = 0
@@ -120,7 +120,7 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(ans,"Diag up left")
+                total_ans.append(ans)
         
         
         shift = 0
@@ -135,16 +135,21 @@ def wordsearch(search_string):
                     ans.clear()
                     break
             if len(ans) == len(string):
-                print(ans,"Diag down right")
+                total_ans.append(ans)
+        return total_ans
+        
 
         
     for r in range(h):
         for c in range(w):
             if puzzle[r][c] == string[0]:
-                check(r,c )
+                if len(check(r,c)) > 1:
+                    print(check(r,c),"more than one")
+                else:
+                    print(check(r,c)[0],"one")
+        
     
             
             
             
-wordsearch('gazebo')
-
+wordsearch('blew')
